@@ -1,5 +1,7 @@
 CharacteristicName,n_sites,n_records
-Conductivity,4,7
-Specific conductance,494,11438
-"Specific Conductance, Calculated/Measured Ratio",2,48
-"Temperature, water",504,8773
+Conductivity,357,9659
+Specific conductance,2428,78935
+Temperature,1,5
+"Temperature, sample",1,1
+"Temperature, water",2726,120342
+"Temperature, water, deg F",2,7

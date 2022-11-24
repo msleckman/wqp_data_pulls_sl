@@ -1,6 +1,18 @@
 parameter,CharacteristicName,ResultMeasure.MeasureUnitCode,n_records
-conductivity,Conductivity,uS/cm,6
-conductivity,Specific conductance,uS/cm,7550
-conductivity,Specific conductance,NA,6
-conductivity,"Specific Conductance, Calculated/Measured Ratio",uS/cm,42
-temperature,"Temperature, water",deg C,8333
+conductivity,Conductivity,mg/l,1
+conductivity,Conductivity,mS/cm,55
+conductivity,Conductivity,umho/cm,1
+conductivity,Conductivity,uS/cm,9157
+conductivity,Conductivity,NA,2
+conductivity,Specific conductance,mg/l,1
+conductivity,Specific conductance,mS/cm,5
+conductivity,Specific conductance,umho/cm,34
+conductivity,Specific conductance,uS/cm,69259
+conductivity,Specific conductance,NA,43
+temperature,Temperature,deg C,5
+temperature,"Temperature, sample",deg C,1
+temperature,"Temperature, water",deg C,82385
+temperature,"Temperature, water",mg/l,6
+temperature,"Temperature, water",None,3
+temperature,"Temperature, water",NA,26
+temperature,"Temperature, water, deg F",deg C,7

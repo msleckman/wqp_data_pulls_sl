@@ -101,6 +101,12 @@ p1_targets_list <- list(
     subset_inventory(p1_wqp_inventory, p1_AOI_sf)
   ),
   
+  tar_target(p1_wqp_inventory_aoi_sf,
+             p1_wqp_inventory_aoi %>%
+               sf::st_as_sf(coords = c('lon','lat')) %>%
+               sf::st_set_crs(st_crs(p1_AOI_sf))
+  ),
+  
   # Summarize the data that would come back from the WQP
   tar_target(
     p1_wqp_inventory_summary_csv,
