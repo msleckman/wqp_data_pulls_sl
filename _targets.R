@@ -25,8 +25,10 @@ param_groups_select <- c('temperature','conductivity')
 
 # Specify coordinates that define the spatial area of interest
 # lat/lon are referenced to WGS84
-coords_lon <- c(-77.063, -75.333, -75.437)
-coords_lat <- c(40.547, 41.029, 39.880)
+coords_lon <- c(-118.73433, -118.66893)
+coords_lat <- c(39.30991, 39.33660)
+
+        
 
 # Specify arguments to WQP queries
 # see https://www.waterqualitydata.us/webservices_documentation for more information 

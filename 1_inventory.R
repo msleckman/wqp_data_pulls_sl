@@ -48,17 +48,15 @@ p1_targets_list <- list(
   # read_csv("1_inventory/in/my_sites.csv"). See README for an example of how to 
   # use a shapefile to define the AOI.
   tar_target(
-    p1_AOI,
-    data.frame(lon = coords_lon,
-               lat = coords_lat)
+    p1_lake_watersheds,
+    sf::st_read('1_inventory/cfg/p2_lake_watersheds_dissolved.shp', quiet = TRUE)
   ),
   
-  # Create a spatial (sf) object representing the area of interest
+  ## Create AOI for saline lakes extent
   tar_target(
     p1_AOI_sf,
-    sf::st_as_sf(p1_AOI, coords = c("lon","lat"), crs = 4326) %>%
-      summarize(geometry = sf::st_combine(geometry)) %>%
-      sf::st_cast("POLYGON")
+    p1_lake_watersheds %>% 
+      sf::st_cast(., 'POLYGON')
   ),
   
   # Create a big grid of boxes to set up chunked data queries.
@@ -97,7 +95,7 @@ p1_targets_list <- list(
     error = "continue"
   ),
   
-  # Subset the WQP inventory to only retain sites within the area of interest
+  # Subset the WQP inventory to only retain sites within lake watershed
   tar_target(
     p1_wqp_inventory_aoi,
     subset_inventory(p1_wqp_inventory, p1_AOI_sf)
@@ -106,7 +104,7 @@ p1_targets_list <- list(
   # Summarize the data that would come back from the WQP
   tar_target(
     p1_wqp_inventory_summary_csv,
-    summarize_wqp_inventory(p1_wqp_inventory_aoi, "1_inventory/log/summary_wqp_inventory.csv"),
+    summarize_wqp_inventory(p1_wqp_inventory_aoi, "1_inventory/log/summary_wqp_inventory_saline_lakes.csv"),
     format = "file"
   )
 
