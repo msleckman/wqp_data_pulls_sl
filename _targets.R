@@ -21,14 +21,20 @@ end_date <- "2020-12-31"
 # change depending on the user or application, so the yml file can be edited to 
 # omit characteristic names or include others, to change top-level parameter names,
 # or to customize parameter groupings. 
-param_groups_select <- c('temperature','conductivity')
+param_groups_select <- c('temperature',
+                         'conductivity',
+                         'salinity',
+                         'DO',
+                         'pH',
+                         'nitrate',
+                         'nitrogen',
+                         'phosphorus')
 
 # Specify coordinates that define the spatial area of interest
 # lat/lon are referenced to WGS84
 coords_lon <- c(-118.73433, -118.66893)
 coords_lat <- c(39.30991, 39.33660)
 
-        
 
 # Specify arguments to WQP queries
 # see https://www.waterqualitydata.us/webservices_documentation for more information 
