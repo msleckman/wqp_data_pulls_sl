@@ -34,15 +34,20 @@ nmbr_unique_meas_per_sites <- p1_wqp_inventory_aoi %>%
   arrange(desc(`n()`))
 
 ## Pulls sites that collect 3 diff measurements
-monitoring_location_3 <- p1_wqp_inventory_aoi %>%
+monitoring_location_char <- p1_wqp_inventory_aoi %>%
+  group_by(MonitoringLocationIdentifier,ProviderName) %>%
+  summarise(n())
+
+## Pulls sites that collect 13 diff measurements
+monitoring_location_13 <- p1_wqp_inventory_aoi %>%
   group_by(MonitoringLocationIdentifier,ProviderName, OrganizationFormalName) %>%
   summarise(n()) %>% 
-  filter(`n()`== 3) %>%
+  filter(`n()`== 13) %>%
   pull(MonitoringLocationIdentifier)
 
 ## Unique measurement type for sites with 3 different ones 
 p1_wqp_inventory_aoi %>%
-  filter(MonitoringLocationIdentifier %in% monitoring_location_3)
+  filter(MonitoringLocationIdentifier %in% monitoring_location_13) %>% 
   pull(CharacteristicName) %>%
   unique()
   

@@ -3,6 +3,13 @@ source("3_harmonize/src/format_columns.R")
 source("3_harmonize/src/clean_wqp_data.R")
 source("3_harmonize/src/clean_conductivity_data.R")
 source("3_harmonize/src/clean_temperature_data.R")
+source('3_harmonize/src/clean_DO_data.R')
+source('3_harmonize/src/clean_nitrate_data.R')
+source('3_harmonize/src/clean_nitrogen_data.R')
+source('3_harmonize/src/clean_ph_data.R')
+source('3_harmonize/src/clean_phosphorus_data.R')
+source('3_harmonize/src/clean_salinity_data.R')
+
 source("3_harmonize/src/summarize_wqp_records.R")
 
 p3_targets_list <- list(
@@ -40,8 +47,12 @@ p3_targets_list <- list(
   tar_target(
     p3_wqp_param_cleaning_info,
     tibble(
-      parameter = c('conductivity', 'temperature'),
-      cleaning_fxn = c(clean_conductivity_data, clean_temperature_data))
+      parameter = c('conductivity','temperature',
+                    'salinity','DO', 'pH',
+                    'nitrate','nitrogen','phosphorus'),
+      cleaning_fxn = c(clean_conductivity_data, clean_temperature_data,
+                       clean_salinity_data, clean_DO_data, clean_ph_data,
+                       clean_nitrate_data, clean_N_data, clean_phos_data))
   ),
   
   # Group the WQP data by parameter group in preparation for parameter-specific
