@@ -3,6 +3,7 @@ source("1_inventory/src/check_characteristics.R")
 source("1_inventory/src/create_grids.R")
 source("1_inventory/src/get_wqp_inventory.R")
 source("1_inventory/src/summarize_wqp_inventory.R")
+source('1_inventory/src/sites_along_waterbody.R')
 
 p1_targets_list <- list(
   
@@ -107,10 +108,60 @@ p1_targets_list <- list(
                sf::st_set_crs(st_crs(p1_AOI_sf))
   ),
   
+  # Read lakes spatial file to mutate col with stream order info
+  tar_target(p1_lake_tributaries_sf,
+             sf::st_read('1_inventory/cfg/p2_lake_tributaries.shp', quiet = TRUE)
+  ),
+  
+  # Read in lakes spatial file to mutate col with stream order info
+  tar_target(p1_saline_lakes_sf,
+             sf::st_read('1_inventory/cfg/saline_lakes.shp', quiet = TRUE)
+  ),
+  
+  # sites along SO3
+  tar_target(p1_sites_along_SO3,
+             sites_along_waterbody(site_sf = p1_wqp_inventory_aoi_sf,
+                                   site_id_col = 'MonitoringLocationIdentifier',
+                                   waterbody_sf = p1_lake_tributaries_sf,
+                                   lake_waterbody = FALSE)
+             ),
+  
+  # Sites along lakes
+  # Read tributaries to mutate col with stream order info
+  tar_target(p1_sites_along_lake,
+             sites_along_waterbody(site_sf = p1_wqp_inventory_aoi_sf,
+                                   site_id_col = 'MonitoringLocationIdentifier',
+                                   waterbody_sf = p1_saline_lakes_sf,
+                                   lake_waterbody = TRUE)
+  ),
+  
+  tar_target(p1_wqp_inventory_aoi_w_SO_sf,
+             add_stream_order(inventory_sf = p1_wqp_inventory_aoi_sf,
+                              site_id_col = 'MonitoringLocationIdentifier',
+                              lakes_sf = p1_saline_lakes_sf,
+                              flines_sf = p1_lake_tributaries_sf)
+             ),
+  
+  ## pull out just site id and stream order class
+  tar_target(p1_site_stream_order,
+    p1_wqp_inventory_aoi_w_SO_sf %>%
+               st_drop_geometry() %>%
+               select(MonitoringLocationIdentifier, stream_order_category) %>%
+      distinct()
+    ),
+  
+  tar_target(p1_wqp_inventory_aoi_w_SO,
+             left_join(x = p1_wqp_inventory_aoi,
+                       y = p1_site_stream_order, 
+                       by = 'MonitoringLocationIdentifier')
+             ),
+  
+             
   # Summarize the data that would come back from the WQP
   tar_target(
     p1_wqp_inventory_summary_csv,
-    summarize_wqp_inventory(p1_wqp_inventory_aoi, "1_inventory/log/summary_wqp_inventory_saline_lakes.csv"),
+    summarize_wqp_inventory(p1_wqp_inventory_aoi,
+                            "1_inventory/log/summary_wqp_inventory_saline_lakes2.csv"),
     format = "file"
   )
 

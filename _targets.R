@@ -1,7 +1,7 @@
 library(targets)
 
 options(tidyverse.quiet = TRUE)
-tar_option_set(packages = c('tidyverse', 'lubridate', 'dataRetrieval', 
+tar_option_set(packages = c('tidyverse', 'lubridate', 'dataRetrieval', 'dplyr',
                             'sf', 'xml2', 'units', 'retry', 'MESS'))
 
 source("1_inventory.R")
