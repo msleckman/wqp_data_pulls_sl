@@ -146,7 +146,8 @@ p1_targets_list <- list(
   tar_target(p1_site_stream_order,
     p1_wqp_inventory_aoi_w_SO_sf %>%
                st_drop_geometry() %>%
-               select(MonitoringLocationIdentifier, stream_order_category) %>%
+               select(MonitoringLocationIdentifier,
+                      stream_order_category) %>%
       distinct()
     ),
   
@@ -160,7 +161,7 @@ p1_targets_list <- list(
   # Summarize the data that would come back from the WQP
   tar_target(
     p1_wqp_inventory_summary_csv,
-    summarize_wqp_inventory(p1_wqp_inventory_aoi,
+    summarize_wqp_inventory(p1_wqp_inventory_aoi_w_SO,
                             "1_inventory/log/summary_wqp_inventory_saline_lakes2.csv"),
     format = "file"
   )

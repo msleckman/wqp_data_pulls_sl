@@ -87,13 +87,21 @@ p3_targets_list <- list(
     map(p3_wqp_data_aoi_clean_grp)
   ),
   
+  
+  tar_target(p3_wqp_data_aoi_clean_param_w_SO,
+    p3_wqp_data_aoi_clean_param %>% 
+               left_join(., 
+                         y = p1_site_stream_order,
+                         by = 'MonitoringLocationIdentifier')
+  ),
+  
   # Summarize the number of records associated with each parameter,
   # characteristic name, and harmonized units. The harmonized dataset
   # can be summarized using any combination of columns by passing a
   # different vector of column names in `grouping_cols`.
   tar_target(
     p3_wqp_records_summary_csv,
-    summarize_wqp_records(p3_wqp_data_aoi_clean_param, 
+    summarize_wqp_records(p3_wqp_data_aoi_clean_param_w_SO, 
                           grouping_cols = c('parameter', 
                                             'CharacteristicName',
                                             'ResultMeasure.MeasureUnitCode'),
