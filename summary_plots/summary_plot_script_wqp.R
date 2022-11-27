@@ -155,7 +155,8 @@ ggsave(filename = 'map_wq_sites',
 p3_wqp_data_aoi_clean_param <- readRDS(p3_wqp_data_aoi_clean_param_rds)
 
 summarized_wqp_data <- p3_wqp_data_aoi_clean_param %>% 
-  select(MonitoringLocationIdentifier, ActivityStartDate, CharacteristicName, ResultMeasureValue) %>%
+  select(MonitoringLocationIdentifier, ActivityStartDate,
+         CharacteristicName, ResultMeasureValue) %>%
   ## Create new Year col and month col to then gather different year and month coverage 
   mutate(ActivityStartDate = as.Date(ActivityStartDate),
          Year = year(ActivityStartDate),

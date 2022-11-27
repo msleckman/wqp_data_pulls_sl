@@ -4,7 +4,8 @@ options(tidyverse.quiet = TRUE)
 tar_option_set(packages = c('tidyverse', 'lubridate', 'dataRetrieval', 'dplyr',
                             'sf', 'xml2', 'units', 'retry', 'MESS'))
 
-source("1_inventory.R")
+source("1_1_inventory.R")
+source("1_2_get_site_SO.R")
 source("2_download.R")
 source("3_harmonize.R")
 
@@ -46,6 +47,9 @@ wqp_args <- list(sampleMedia = c("Water","water"),
                  startDateHi = end_date)
 
 # Return the complete list of targets
-c(p1_targets_list, p2_targets_list, p3_targets_list)
+c(p1_targets_list,
+  p1_get_site_SO_list,
+  p2_targets_list,
+  p3_targets_list)
 
 
