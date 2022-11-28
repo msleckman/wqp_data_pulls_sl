@@ -2,98 +2,101 @@ parameter,CharacteristicName,ResultMeasure.MeasureUnitCode,n_records
 conductivity,Conductivity,mg/l,1
 conductivity,Conductivity,mS/cm,63
 conductivity,Conductivity,umho/cm,1
-conductivity,Conductivity,uS/cm,9508
+conductivity,Conductivity,uS/cm,9852
 conductivity,Conductivity,NA,7
 conductivity,Specific conductance,mg/l,1
 conductivity,Specific conductance,mS/cm,5
 conductivity,Specific conductance,umho/cm,453
-conductivity,Specific conductance,uS/cm,91400
+conductivity,Specific conductance,uS/cm,96791
 conductivity,Specific conductance,NA,105
 DO,Dissolved oxygen (DO),%,1103
 DO,Dissolved oxygen (DO),count,1
 DO,Dissolved oxygen (DO),mg,3070
-DO,Dissolved oxygen (DO),mg/l,56303
+DO,Dissolved oxygen (DO),mg/l,59579
 DO,Dissolved oxygen (DO),mS/cm,1
 DO,Dissolved oxygen (DO),None,22
 DO,Dissolved oxygen (DO),ppm,95
 DO,Dissolved oxygen (DO),umho/cm,13
-DO,Dissolved oxygen (DO),NA,80
-DO,Dissolved oxygen saturation,%,45056
-nitrate,Inorganic nitrogen (nitrate and nitrite),mg/l as N,8762
-nitrate,Inorganic nitrogen (nitrate and nitrite),NA,2395
+DO,Dissolved oxygen (DO),NA,88
+DO,Dissolved oxygen saturation,%,47833
+nitrate,Inorganic nitrogen (nitrate and nitrite),mg/l as N,9014
+nitrate,Inorganic nitrogen (nitrate and nitrite),NA,2619
 nitrate,Nitrate,mg N/l******,83
-nitrate,Nitrate,mg/l,4452
-nitrate,Nitrate,mg/l as N,1160
-nitrate,Nitrate,mg/l asNO3,219
+nitrate,Nitrate,mg/l,4696
+nitrate,Nitrate,mg/l as N,1227
+nitrate,Nitrate,mg/l asNO3,244
 nitrate,Nitrate,MPN/100ml,1
 nitrate,Nitrate,ueq/L,31
-nitrate,Nitrate,NA,1458
+nitrate,Nitrate,NA,1600
 nitrate,Nitrate + Nitrite,mg N/l******,47
-nitrate,Nitrate + Nitrite,mg/l,640
+nitrate,Nitrate + Nitrite,mg/l,1706
+nitrate,Nitrate + Nitrite,ug/l,8
 nitrate,Nitrate as N,ueq/L,69
 nitrate,Nitrite,mg N/l******,79
-nitrate,Nitrite,mg/l,7537
-nitrate,Nitrite,mg/l as N,1220
+nitrate,Nitrite,mg/l,7766
+nitrate,Nitrite,mg/l as N,1302
 nitrate,Nitrite,MPN/100ml,1
 nitrate,Nitrite,ug/l,1
-nitrate,Nitrite,NA,1761
+nitrate,Nitrite,NA,1972
 nitrogen,Kjeldahl nitrogen,deg C,1
-nitrogen,Kjeldahl nitrogen,mg/l,10814
-nitrogen,Kjeldahl nitrogen,mg/l as N,12203
+nitrogen,Kjeldahl nitrogen,mg/l,11310
+nitrogen,Kjeldahl nitrogen,mg/l as N,12460
 nitrogen,Kjeldahl nitrogen,ppm,26
 nitrogen,Kjeldahl nitrogen,ug/l,273
-nitrogen,Kjeldahl nitrogen,NA,353
-nitrogen,Nitrogen,mg/l,32505
+nitrogen,Kjeldahl nitrogen,NA,355
+nitrogen,Nitrogen,mg/l,37468
 nitrogen,Nitrogen,ug/l,31
-nitrogen,Nitrogen,NA,116
-nitrogen,"Nitrogen, mixed forms (NH3), (NH4), organic, (NO2) and (NO3)",lb/day,244
-nitrogen,"Nitrogen, mixed forms (NH3), (NH4), organic, (NO2) and (NO3)",mg/l,16068
+nitrogen,Nitrogen,NA,118
+nitrogen,"Nitrogen, mixed forms (NH3), (NH4), organic, (NO2) and (NO3)",lb/day,264
+nitrogen,"Nitrogen, mixed forms (NH3), (NH4), organic, (NO2) and (NO3)",mg/l,16640
 nitrogen,"Nitrogen, mixed forms (NH3), (NH4), organic, (NO2) and (NO3)",mg/l NO3,2
-nitrogen,"Nitrogen, mixed forms (NH3), (NH4), organic, (NO2) and (NO3)",NA,1078
-nitrogen,Organic Nitrogen,mg/l,9283
-nitrogen,Organic Nitrogen,NA,5983
-nitrogen,Total Kjeldahl nitrogen,mg/l,859
-nitrogen,Total Kjeldahl nitrogen,NA,318
-nitrogen,Total Kjeldahl nitrogen (Organic N & NH3),mg/l,88
-nitrogen,"Total Nitrogen, mixed forms",mg/l,632
-nitrogen,"Total Nitrogen, mixed forms",ug/l,5
+nitrogen,"Nitrogen, mixed forms (NH3), (NH4), organic, (NO2) and (NO3)",NA,1127
+nitrogen,Organic Nitrogen,mg/l,9403
+nitrogen,Organic Nitrogen,NA,6317
+nitrogen,Total Kjeldahl nitrogen,mg/l,996
+nitrogen,Total Kjeldahl nitrogen,NA,412
+nitrogen,Total Kjeldahl nitrogen (Organic N & NH3),mg/l,134
+nitrogen,"Total Nitrogen, mixed forms",mg/l,840
+nitrogen,"Total Nitrogen, mixed forms",ug/l,21
 pH,pH,0/00,3
 pH,pH,count,2
 pH,pH,deg C,3
 pH,pH,mg/l,14
 pH,pH,Mole/l,1
-pH,pH,None,74070
-pH,pH,std units,12404
+pH,pH,None,77466
+pH,pH,std units,13097
 pH,pH,units/cm,3
 pH,pH,NA,52
 phosphorus,Organic phosphorus,mg/l,5
-phosphorus,Orthophosphate,mg/l,9905
-phosphorus,Orthophosphate,mg/l as P,9645
+phosphorus,Orthophosphate,mg/l,10723
+phosphorus,Orthophosphate,mg/l as P,10072
 phosphorus,Orthophosphate,mg/l asPO4,9
 phosphorus,Orthophosphate,ppb,1
-phosphorus,Orthophosphate,NA,1544
+phosphorus,Orthophosphate,ug/l,2
+phosphorus,Orthophosphate,NA,1633
 phosphorus,Phosphate-phosphorus,mg/l,370
 phosphorus,Phosphate-phosphorus,NA,2
 phosphorus,Phosphorus,%,1
 phosphorus,Phosphorus,lb/day,9
-phosphorus,Phosphorus,mg/l,9029
-phosphorus,Phosphorus,mg/l as P,18304
+phosphorus,Phosphorus,mg/l,9232
+phosphorus,Phosphorus,mg/l as P,18947
 phosphorus,Phosphorus,None,1
+phosphorus,Phosphorus,ppb,3
 phosphorus,Phosphorus,ug/l,361
 phosphorus,Phosphorus,NA,141
 phosphorus,Soluble Reactive Phosphorus (SRP),mg/l,1
-phosphorus,"Total Phosphorus, mixed forms",mg/l,708
-phosphorus,"Total Phosphorus, mixed forms",ug/l,71
-salinity,Salinity,g/l,1051
+phosphorus,"Total Phosphorus, mixed forms",mg/l,1803
+phosphorus,"Total Phosphorus, mixed forms",ug/l,79
+salinity,Salinity,g/l,1153
 salinity,Salinity,ppm,2963
-salinity,Salinity,ppt,6819
-salinity,Salinity,ppth,8061
+salinity,Salinity,ppt,7138
+salinity,Salinity,ppth,8071
 salinity,Salinity,PSS,3884
-salinity,Salinity,PSU,998
+salinity,Salinity,PSU,1208
 salinity,Salinity,NA,145
-temperature,Temperature,deg C,272
+temperature,Temperature,deg C,290
 temperature,"Temperature, sample",deg C,1
-temperature,"Temperature, water",deg C,104826
+temperature,"Temperature, water",deg C,110507
 temperature,"Temperature, water",mg/l,6
 temperature,"Temperature, water",None,3
 temperature,"Temperature, water",NA,27

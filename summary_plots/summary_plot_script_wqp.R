@@ -13,12 +13,13 @@ library(lubridate)
 # load targets -----------------------------------------------------------------
 
 ## final data set
-tar_load(p3_wqp_data_aoi_clean_param_rds)
+tar_load(p4_wqp_data_aoi_clean_param_rds)
+tar_load(p4_wqp_data_aoi_clean_param_w_SO_rds)
 ## Watersheds sf obj
 tar_load(p1_lake_watersheds)
 ## wqp discrete sites sf obj 
 tar_load(p1_wqp_inventory_aoi_sf)
-
+tar_load(p1_wqp_inventory_aoi_w_SO_sf)
 ## sites description
 tar_load(p1_wqp_inventory_aoi)
 
@@ -56,6 +57,7 @@ p1_wqp_inventory_aoi %>%
 ## > 82.5% of sites are an EPA STORET sites
 
 
+
 ## sites
 nmbr_unique_meas_per_sites <- p1_wqp_inventory_aoi %>%
   group_by(MonitoringLocationIdentifier, ProviderName, OrganizationFormalName) %>%
@@ -81,6 +83,12 @@ nmbr_unique_meas_per_sites_provider <- p1_wqp_inventory_aoi %>%
   summarise(n()) %>% arrange(desc(`n()`))
 
 nmbr_unique_meas_per_sites_provider %>% head()
+
+## What does the top wqp identifier collect? 
+p1_wqp_inventory_aoi %>%
+  filter(MonitoringLocationIdentifier == I(nmbr_unique_meas_per_sites_provider$MonitoringLocationIdentifier[1]))
+
+
 
 # # A tibble: 6 × 3
 # # Groups:   MonitoringLocationIdentifier [6]
@@ -108,21 +116,6 @@ p1_wqp_inventory_aoi %>%
   
 # -->  generally sites collecting multiple items are collecting Temp water, Conductivity, and Specific Conductance 
 
-## Pulls sites that collect 2 diff measurements
-monitoring_location_2 <- p1_wqp_inventory_aoi %>% group_by(MonitoringLocationIdentifier,
-                                                           ProviderName,
-                                                           OrganizationFormalName) %>%
-  summarise(n()) %>%
-  arrange(desc(`n()`)) %>% 
-  filter(`n()`== 2) %>% pull(MonitoringLocationIdentifier) 
-
-p1_wqp_inventory_aoi %>%
-  filter(MonitoringLocationIdentifier %in% monitoring_location_2) %>% 
-  pull(CharacteristicName) %>%
-  unique()
-
-# -->  generally sites collecting 2 items are collecting 1) Temp water, 2) conductivity : Conductivity or Specific Conductance 
-  
 
 ## Map overall wqp sites 
 
@@ -138,8 +131,7 @@ map_wq_sites <- ggplot()+
   geom_sf(data = p1_wqp_inventory_aoi_sf,
           aes(geometry = geometry, color = CharacteristicName, shape = ProviderName), size = 0.8)+
   lims(x = c(bbox[1],bbox[3]),y = c(bbox[2],bbox[4]))+
-  theme_bw()
-+
+  theme_bw()+
   labs(title = 'NWIS and STORET Data Collection sites in the\n GBD saline lake  watersheds by WQ Parameter')
 
 map_wq_sites
@@ -153,6 +145,8 @@ ggsave(filename = 'map_wq_sites',
 
 ## read output rds wqp data file
 p3_wqp_data_aoi_clean_param <- readRDS(p3_wqp_data_aoi_clean_param_rds)
+
+p3_wqp_data_aoi_clean_param <- p3_wqp_data_aoi_clean_param_w_SO
 
 summarized_wqp_data <- p3_wqp_data_aoi_clean_param %>% 
   select(MonitoringLocationIdentifier, ActivityStartDate,
@@ -179,10 +173,10 @@ summarized_wqp_data <- p3_wqp_data_aoi_clean_param %>%
 
 ## Join to spatial file
 summarized_wqp_data_sf <- summarized_wqp_data %>% 
-  left_join(p1_wqp_inventory_aoi_sf[,c('MonitoringLocationIdentifier','geometry')], by = 'MonitoringLocationIdentifier') %>%
+  left_join(p1_wqp_inventory_aoi_sf[,c('MonitoringLocationIdentifier','geometry')] %>% distinct(), by = 'MonitoringLocationIdentifier') %>%
   st_as_sf() 
 
-## View
+## View - number fo sites with more than 1000 data points
 mapview(summarized_wqp_data_sf %>% filter(!nbr_obs_classes %in% c('<10','10-100','100-1,000')),
         zcol = 'nbr_obs_classes')
 

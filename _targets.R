@@ -4,15 +4,16 @@ options(tidyverse.quiet = TRUE)
 tar_option_set(packages = c('tidyverse', 'lubridate', 'dataRetrieval', 'dplyr',
                             'sf', 'xml2', 'units', 'retry', 'MESS'))
 
-source("1_1_inventory.R")
-source("1_2_get_site_SO.R")
+source("1_inventory.R")
+source("1_get_site_SO.R")
 source("2_download.R")
 source("3_harmonize.R")
+source("4_export.R")
 
 # Define the temporal extent of our data pull
 # set start_date or end_date to "" to query the earliest or latest available date
 start_date <- "2000-01-01"
-end_date <- "2020-12-31" 
+end_date <- "2021-12-31" 
 
 # Define which parameter groups (and CharacteristicNames) to return from WQP. 
 # Different options for parameter groups are represented in the first level of 
@@ -50,6 +51,7 @@ wqp_args <- list(sampleMedia = c("Water","water"),
 c(p1_targets_list,
   p1_get_site_SO_list,
   p2_targets_list,
-  p3_targets_list)
+  p3_targets_list,
+  p4_targets_list)
 
 
