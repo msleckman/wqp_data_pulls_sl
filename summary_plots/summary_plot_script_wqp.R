@@ -1,6 +1,6 @@
 ### REVIEW OUTPUT WQP Data
 
-# libs --------------------------------------------------------------------
+# libs -------------------------------------------------------------------------
 
 library(dplyr)
 library(targets)
@@ -17,6 +17,7 @@ tar_load(p4_wqp_data_aoi_clean_param_rds)
 tar_load(p4_wqp_data_aoi_clean_param_w_SO_rds)
 ## Watersheds sf obj
 tar_load(p1_lake_watersheds)
+tar_load(p1_saline_lakes_sf)
 ## wqp discrete sites sf obj 
 tar_load(p1_wqp_inventory_aoi_sf)
 tar_load(p1_wqp_inventory_aoi_w_SO_sf)
@@ -123,20 +124,23 @@ us_sf <- st_as_sf(maps::map('state', plot=F, fill=T)) %>% st_transform(4326)
 
 bbox <- st_bbox(p1_wqp_inventory_aoi_sf)
 
+p1_wqp_inventory_aoi_w_SO_sf$stream_order_category %>% unique()
+
 tmp <- grepl('temp|Temp',p1_wqp_inventory_aoi_sf$CharacteristicName)
 
 map_wq_sites <- ggplot()+
   geom_sf(data = us_sf, fill = 'white')+
   geom_sf(data = p1_lake_watersheds, fill = 'transparent', color = 'firebrick', size = 0.01, linetype = 'dotted')+
-  geom_sf(data = p1_wqp_inventory_aoi_sf,
-          aes(geometry = geometry, color = CharacteristicName, shape = ProviderName), size = 0.8)+
+  geom_sf(data = p1_saline_lakes_sf, fill = ' light blue', color = 'grey', alpha = 0.5)+ 
+  geom_sf(data = p1_wqp_inventory_aoi_w_SO_sf %>% filter(stream_order_category != "Not along SO 3+ or saline lake"),
+          aes(geometry = geometry, shape = ProviderName), color = 'darkblue',size = 1)+
   lims(x = c(bbox[1],bbox[3]),y = c(bbox[2],bbox[4]))+
   theme_bw()+
   labs(title = 'NWIS and STORET Data Collection sites in the\n GBD saline lake  watersheds by WQ Parameter')
 
 map_wq_sites
 
-ggsave(filename = 'map_wq_sites',
+ggsave(filename = 'map_wq_sites_nwis_storet',
        device= 'png',
        plot =map_wq_sites,
        path = 'summary_plots')
@@ -146,7 +150,10 @@ ggsave(filename = 'map_wq_sites',
 ## read output rds wqp data file
 p3_wqp_data_aoi_clean_param <- readRDS(p3_wqp_data_aoi_clean_param_rds)
 
-p3_wqp_data_aoi_clean_param <- p3_wqp_data_aoi_clean_param_w_SO
+#p3_wqp_data_aoi_clean_param <- p3_wqp_data_aoi_clean_param_w_SO
+
+p3_wqp_data_aoi_clean_param_w_SO %>% select(ResultMeasureValue) %>% nrow()
+
 
 summarized_wqp_data <- p3_wqp_data_aoi_clean_param %>% 
   select(MonitoringLocationIdentifier, ActivityStartDate,
@@ -170,6 +177,8 @@ summarized_wqp_data <- p3_wqp_data_aoi_clean_param %>%
   mutate(nbr_obs_classes = ifelse(nbr_observations <= 10,'<10',
                                   ifelse(nbr_observations > 10 & nbr_observations <= 100,'10-100',
                                          ifelse(nbr_observations > 100 & nbr_observations <= 1000,'100-1,000','>1,000'))))
+
+summarized_wqp_data$max_date %>% max()
 
 ## Join to spatial file
 summarized_wqp_data_sf <- summarized_wqp_data %>% 

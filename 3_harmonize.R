@@ -86,12 +86,10 @@ p3_targets_list <- list(
   ),
   
   ## add stream param
-  tar_target(p3_wqp_data_aoi_clean_param_w_SO,
-    p3_wqp_data_aoi_clean_param %>% 
-               left_join(., 
-                         y = p1_site_stream_order,
-                         by = 'MonitoringLocationIdentifier')
+  tar_target(p3_wqp_data_aoi_clean_param_added_cols,
+    p3_wqp_data_aoi_clean_param %>%
+      left_join(.,y = p1_site_stream_order, by = 'MonitoringLocationIdentifier') %>% 
+      left_join(., y = p1_site_lakes_sf_dict, by = 'MonitoringLocationIdentifier')
   )
-  
 )
 
