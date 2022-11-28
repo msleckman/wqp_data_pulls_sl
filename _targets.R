@@ -13,7 +13,7 @@ source("4_export.R")
 # Define the temporal extent of our data pull
 # set start_date or end_date to "" to query the earliest or latest available date
 start_date <- "2000-01-01"
-end_date <- "2021-12-31" 
+end_date <- "2022-11-27" 
 
 # Define which parameter groups (and CharacteristicNames) to return from WQP. 
 # Different options for parameter groups are represented in the first level of 
