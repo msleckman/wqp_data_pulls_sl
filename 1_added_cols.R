@@ -1,6 +1,6 @@
 source('1_inventory/src/sites_along_waterbody.R')
 
-p1_get_site_SO_list <- list(
+p1_added_cols_list <- list(
   
 
   ## Create simple sf dict of unique monitoringLocationIdentifier sites and point geom

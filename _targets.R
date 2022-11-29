@@ -49,7 +49,7 @@ wqp_args <- list(sampleMedia = c("Water","water"),
 
 # Return the complete list of targets
 c(p1_targets_list,
-  p1_get_site_SO_list,
+  p1_added_cols_list,
   p2_targets_list,
   p3_targets_list,
   p4_targets_list)
