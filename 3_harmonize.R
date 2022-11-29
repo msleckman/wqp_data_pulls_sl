@@ -36,7 +36,7 @@ p3_targets_list <- list(
   # retain duplicate rows, set the argument `remove_duplicated_rows` to FALSE. 
   tar_target(
     p3_wqp_data_aoi_clean,
-    clean_wqp_data(p3_wqp_data_aoi_formatted, p1_char_names_crosswalk)
+    clean_wqp_data(p3_wqp_data_aoi_formatted, p1_char_names_crosswalk, remove_duplicated_rows = TRUE)
   ),
   
   # Create a table that defines parameter-specific data cleaning functions.

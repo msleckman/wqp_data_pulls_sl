@@ -21,12 +21,15 @@ tar_load(p1_lake_watersheds)
 tar_load(p1_saline_lakes_sf)
 ## sites description
 tar_load(p1_wqp_inventory_aoi)
+targets::tar_load(p1_wqp_inventory_aoi_added_cols)
+
+tar_load(p1_wqp_inventory_aoi_sf)
 
 # Scan output -----------------------------------------------------------------
 
 ## STORET EPA vs USGS NWIS
 p1_wqp_inventory_aoi %>%
-1q  group_by(ProviderName) %>%
+  group_by(ProviderName) %>%
   summarise(percent_share_of_unique_parameter_site = (n()/nrow(p1_wqp_inventory_aoi))*100)
 
 # # A tibble: 2 × 2
@@ -54,8 +57,6 @@ p1_wqp_inventory_aoi %>%
 # 2 STORET        82.5
 
 ## > 82.5% of sites are an EPA STORET sites
-
-
 
 ## sites
 nmbr_unique_meas_per_sites <- p1_wqp_inventory_aoi %>%
@@ -86,8 +87,6 @@ nmbr_unique_meas_per_sites_provider %>% head()
 ## What does the top wqp identifier collect? 
 p1_wqp_inventory_aoi %>%
   filter(MonitoringLocationIdentifier == I(nmbr_unique_meas_per_sites_provider$MonitoringLocationIdentifier[1]))
-
-
 
 # # A tibble: 6 × 3
 # # Groups:   MonitoringLocationIdentifier [6]
@@ -122,7 +121,7 @@ us_sf <- st_as_sf(maps::map('state', plot=F, fill=T)) %>% st_transform(4326)
 
 bbox <- st_bbox(p1_wqp_inventory_aoi_sf)
 
-p1_wqp_inventory_aoi_w_SO_sf$stream_order_category %>% unique()
+p1_wqp_inventory_aoi_added_cols$stream_order_category %>% unique()
 
 tmp <- grepl('temp|Temp',p1_wqp_inventory_aoi_sf$CharacteristicName)
 
@@ -130,11 +129,11 @@ map_wq_sites <- ggplot()+
   geom_sf(data = us_sf, fill = 'white')+
   geom_sf(data = p1_lake_watersheds, fill = 'transparent', color = 'firebrick', size = 0.01, linetype = 'dotted')+
   geom_sf(data = p1_saline_lakes_sf, fill = ' light blue', color = 'grey', alpha = 0.5)+ 
-  geom_sf(data = p1_wqp_inventory_aoi_w_SO_sf %>% filter(stream_order_category != "Not along SO 3+ or saline lake"),
-          aes(geometry = geometry, shape = ProviderName), color = 'darkblue',size = 1)+
+  geom_sf(data = p1_wqp_inventory_aoi_sf,
+          aes(geometry = geometry, shape = ProviderName), color = 'darkblue', size = 1)+
   lims(x = c(bbox[1],bbox[3]),y = c(bbox[2],bbox[4]))+
   theme_bw()+
-  labs(title = 'NWIS and STORET Data Collection sites in the\n GBD saline lake  watersheds by WQ Parameter')
+  labs(title = 'NWIS and STORET Data Collection sites in the\n GBD saline lake  watersheds')
 
 map_wq_sites
 
@@ -148,7 +147,7 @@ ggsave(filename = 'map_wq_sites_nwis_storet',
 ## read output rds wqp data file
 p3_wqp_data_aoi_clean_param <- readRDS(p3_wqp_data_aoi_clean_param_rds)
 
-#p3_wqp_data_aoi_clean_param <- p3_wqp_data_aoi_clean_param_w_SO
+p3_wqp_data_aoi_clean_param <- p3_wqp_data_aoi_clean_param_added_cols
 
 p3_wqp_data_aoi_clean_param_w_SO %>% select(ResultMeasureValue) %>% nrow()
 
