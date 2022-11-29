@@ -14,13 +14,11 @@ library(lubridate)
 
 ## final data set
 tar_load(p4_wqp_data_aoi_clean_param_rds)
-tar_load(p4_wqp_data_aoi_clean_param_w_SO_rds)
+tar_load(p3_wqp_data_aoi_clean_param_added_cols)
+tar_load(p4_wqp_data_aoi_clean_param_added_cols_rds)
 ## Watersheds sf obj
 tar_load(p1_lake_watersheds)
 tar_load(p1_saline_lakes_sf)
-## wqp discrete sites sf obj 
-tar_load(p1_wqp_inventory_aoi_sf)
-tar_load(p1_wqp_inventory_aoi_w_SO_sf)
 ## sites description
 tar_load(p1_wqp_inventory_aoi)
 
@@ -28,7 +26,7 @@ tar_load(p1_wqp_inventory_aoi)
 
 ## STORET EPA vs USGS NWIS
 p1_wqp_inventory_aoi %>%
-  group_by(ProviderName) %>%
+1q  group_by(ProviderName) %>%
   summarise(percent_share_of_unique_parameter_site = (n()/nrow(p1_wqp_inventory_aoi))*100)
 
 # # A tibble: 2 × 2

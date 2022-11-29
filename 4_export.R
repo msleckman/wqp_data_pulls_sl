@@ -33,9 +33,9 @@ p4_targets_list <- list(
   
   ## Save output file containing the harmonized data with stream order category 
   tar_target(
-    p4_wqp_data_aoi_clean_param_w_SO_rds,{
-      outfile <- "4_export/out/harmonized_wqp_data_w_SO.rds"
-      saveRDS(p3_wqp_data_aoi_clean_param_w_SO, outfile)
+    p4_wqp_data_aoi_clean_param_added_cols_rds,{
+      outfile <- "4_export/out/harmonized_wqp_data_added_cols.rds"
+      saveRDS(p3_wqp_data_aoi_clean_param_added_cols, outfile)
       outfile
     }, format = "file"
   )

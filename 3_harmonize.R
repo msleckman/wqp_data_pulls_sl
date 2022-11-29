@@ -89,7 +89,7 @@ p3_targets_list <- list(
   tar_target(p3_wqp_data_aoi_clean_param_added_cols,
     p3_wqp_data_aoi_clean_param %>%
       left_join(.,y = p1_site_stream_order, by = 'MonitoringLocationIdentifier') %>% 
-      left_join(., y = p1_site_lakes_sf_dict, by = 'MonitoringLocationIdentifier')
+      left_join(., y = p1_site_lakes_sf_dict %>% st_drop_geometry(), by = 'MonitoringLocationIdentifier')
   )
 )
 
