@@ -1,11 +1,11 @@
 library(targets)
 
 options(tidyverse.quiet = TRUE)
-tar_option_set(packages = c('tidyverse', 'lubridate', 'dataRetrieval', 'dplyr',
+tar_option_set(packages = c('tidyverse', 'lubridate', 'dataRetrieval',
                             'sf', 'xml2', 'units', 'retry', 'MESS'))
 
 source("1_inventory.R")
-source("1_get_site_SO.R")
+source("1_added_cols.R")
 source("2_download.R")
 source("3_harmonize.R")
 source("4_export.R")
