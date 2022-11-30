@@ -66,9 +66,7 @@ p1_added_cols_list <- list(
   tar_target(p1_wqp_inventory_aoi_added_cols,
              left_join(x = p1_wqp_inventory_aoi,
                        y = p1_site_stream_order,
-                       by = 'MonitoringLocationIdentifier') %>% 
-              left_join(x = ., y =p1_site_lakes_sf_dict %>% st_drop_geometry(),
-                        by = 'MonitoringLocationIdentifier') 
+                       by = 'MonitoringLocationIdentifier') 
   )
   
 )

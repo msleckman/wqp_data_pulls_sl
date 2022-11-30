@@ -38,6 +38,14 @@ p4_targets_list <- list(
       saveRDS(p3_wqp_data_aoi_clean_param_added_cols, outfile)
       outfile
     }, format = "file"
+  ),
+  
+  tar_target(
+    p4_wqp_inventory_aoi_added_cols,
+    {outfile <- "4_export/out/harmonized_wqp_sites.rds"
+    saveRDS(p1_wqp_inventory_aoi_added_cols, outfile)
+    outfile
+    }, format = 'file'
   )
   
 )
