@@ -1,5 +1,29 @@
 CharacteristicName,n_sites,n_records
-Conductivity,4,7
-Specific conductance,494,11438
-"Specific Conductance, Calculated/Measured Ratio",2,48
-"Temperature, water",504,8773
+Conductivity,435,11031
+Dissolved oxygen (DO),2553,141047
+Dissolved oxygen saturation,1690,106389
+Inorganic nitrogen (nitrate and nitrite),316,11883
+Kjeldahl nitrogen,899,29785
+Nitrate,655,16768
+Nitrate + Nitrite,341,2469
+Nitrate as N,53,69
+Nitrite,820,19672
+Nitrogen,1891,39464
+"Nitrogen, mixed forms (NH3), (NH4), organic, (NO2) and (NO3)",300,21258
+Organic Nitrogen,575,15994
+Organic phosphorus,3,45
+Orthophosphate,972,39348
+pH,3254,171255
+Phosphate-phosphorus,17,372
+Phosphorus,1070,36485
+Salinity,1105,27091
+Soluble Reactive Phosphorus (SRP),1,8
+Specific conductance,3049,176885
+Temperature,9,305
+"Temperature, sample",1,1
+"Temperature, water",3446,219856
+"Temperature, water, deg F",2,7
+Total Kjeldahl nitrogen,85,1684
+Total Kjeldahl nitrogen (Organic N & NH3),18,134
+"Total Nitrogen, mixed forms",163,1043
+"Total Phosphorus, mixed forms",394,2721

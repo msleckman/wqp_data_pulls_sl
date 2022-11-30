@@ -3,7 +3,12 @@ source("3_harmonize/src/format_columns.R")
 source("3_harmonize/src/clean_wqp_data.R")
 source("3_harmonize/src/clean_conductivity_data.R")
 source("3_harmonize/src/clean_temperature_data.R")
-source("3_harmonize/src/summarize_wqp_records.R")
+source('3_harmonize/src/clean_DO_data.R')
+source('3_harmonize/src/clean_nitrate_data.R')
+source('3_harmonize/src/clean_nitrogen_data.R')
+source('3_harmonize/src/clean_ph_data.R')
+source('3_harmonize/src/clean_phosphorus_data.R')
+source('3_harmonize/src/clean_salinity_data.R')
 
 p3_targets_list <- list(
   
@@ -31,7 +36,7 @@ p3_targets_list <- list(
   # retain duplicate rows, set the argument `remove_duplicated_rows` to FALSE. 
   tar_target(
     p3_wqp_data_aoi_clean,
-    clean_wqp_data(p3_wqp_data_aoi_formatted, p1_char_names_crosswalk)
+    clean_wqp_data(p3_wqp_data_aoi_formatted, p1_char_names_crosswalk, remove_duplicated_rows = TRUE)
   ),
   
   # Create a table that defines parameter-specific data cleaning functions.
@@ -40,8 +45,12 @@ p3_targets_list <- list(
   tar_target(
     p3_wqp_param_cleaning_info,
     tibble(
-      parameter = c('conductivity', 'temperature'),
-      cleaning_fxn = c(clean_conductivity_data, clean_temperature_data))
+      parameter = c('conductivity','temperature',
+                    'salinity','DO', 'pH',
+                    'nitrate','nitrogen','phosphorus'),
+      cleaning_fxn = c(clean_conductivity_data, clean_temperature_data,
+                       clean_salinity_data, clean_DO_data, clean_ph_data,
+                       clean_nitrate_data, clean_N_data, clean_phos_data))
   ),
   
   # Group the WQP data by parameter group in preparation for parameter-specific
@@ -76,33 +85,11 @@ p3_targets_list <- list(
     map(p3_wqp_data_aoi_clean_grp)
   ),
   
-  # Summarize the number of records associated with each parameter,
-  # characteristic name, and harmonized units. The harmonized dataset
-  # can be summarized using any combination of columns by passing a
-  # different vector of column names in `grouping_cols`.
-  tar_target(
-    p3_wqp_records_summary_csv,
-    summarize_wqp_records(p3_wqp_data_aoi_clean_param, 
-                          grouping_cols = c('parameter', 
-                                            'CharacteristicName',
-                                            'ResultMeasure.MeasureUnitCode'),
-                          "3_harmonize/log/wqp_records_summary.csv"),
-    format = "file"
-  ),
-  
-  # Save output file containing the harmonized data. The code below can be edited
-  # to save the output data to a different file format, but note that a "file"
-  # target expects a character string to be returned when the target is built. 
-  # This target currently represents the output of the pipeline although more 
-  # steps can be added using `p3_wqp_data_aoi_clean_param` as a dependency to 
-  # downstream targets.
-  tar_target(
-    p3_wqp_data_aoi_clean_param_rds,{
-      outfile <- "3_harmonize/out/harmonized_wqp_data.rds"
-      saveRDS(p3_wqp_data_aoi_clean_param, outfile)
-      outfile
-    }, format = "file"
+  ## add stream param
+  tar_target(p3_wqp_data_aoi_clean_param_added_cols,
+    p3_wqp_data_aoi_clean_param %>%
+      left_join(.,y = p1_site_stream_order, by = 'MonitoringLocationIdentifier') %>% 
+      left_join(., y = p1_site_lakes_sf_dict %>% st_drop_geometry(), by = 'MonitoringLocationIdentifier')
   )
-
 )
 
