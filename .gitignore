@@ -16,3 +16,14 @@ _targets
 # User-specific files
 .Ruserdata
 .Rproj.user
+
+## DS store
+.DS_Store
+
+## git
+.git
+
+## project folders
+/summary_plots/*
+/4_export/*
+

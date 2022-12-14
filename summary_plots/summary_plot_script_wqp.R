@@ -25,7 +25,7 @@ targets::tar_load(p1_wqp_inventory_aoi_added_cols)
 
 tar_load(p1_wqp_inventory_aoi_sf)
 
-# Scan output -----------------------------------------------------------------
+# Scan output ------------------------------------------------------------------
 
 ## STORET EPA vs USGS NWIS
 p1_wqp_inventory_aoi %>%
@@ -148,6 +148,8 @@ ggsave(filename = 'map_wq_sites_nwis_storet',
 p3_wqp_data_aoi_clean_param <- readRDS(p3_wqp_data_aoi_clean_param_rds)
 
 p3_wqp_data_aoi_clean_param <- p3_wqp_data_aoi_clean_param_added_cols
+
+p3_wqp_data_aoi_clean_param %>% dim()
 
 p3_wqp_data_aoi_clean_param_w_SO %>% select(ResultMeasureValue) %>% nrow()
 
