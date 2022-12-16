@@ -41,7 +41,7 @@ coords_lat <- c(39.30991, 39.33660)
 # Specify arguments to WQP queries
 # see https://www.waterqualitydata.us/webservices_documentation for more information 
 wqp_args <- list(sampleMedia = c("Water","water"),
-                 siteType = c("Stream",'Lake, Reservoir, Impoundment'),
+                 siteType = c("Stream",'Lake, Reservoir, Impoundment','well'),
                  # return sites with at least one data record
                  minresults = 1, 
                  startDateLo = start_date,
