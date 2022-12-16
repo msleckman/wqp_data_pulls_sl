@@ -10,7 +10,7 @@ source("2_download.R")
 source("3_harmonize.R")
 source("4_export.R")
 
-# Define the temporal extent of our data pull
+# The temporal extent of our data pull for 
 # set start_date or end_date to "" to query the earliest or latest available date
 start_date <- "2000-01-01"
 end_date <- "2022-11-27" 
@@ -41,7 +41,7 @@ coords_lat <- c(39.30991, 39.33660)
 # Specify arguments to WQP queries
 # see https://www.waterqualitydata.us/webservices_documentation for more information 
 wqp_args <- list(sampleMedia = c("Water","water"),
-                 siteType = c("Stream",'Lake, Reservoir, Impoundment','well'),
+                 siteType = c("Stream",'Lake, Reservoir, Impoundment', 'Well'),
                  # return sites with at least one data record
                  minresults = 1, 
                  startDateLo = start_date,
