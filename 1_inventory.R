@@ -45,10 +45,7 @@ p1_targets_list <- list(
   ),
   
   # Define the spatial area of interest (AOI) for the WQP data pull
-  # This target could also be edited to read in coordinates from a local file
-  # that contains the columns 'lon' and 'lat', e.g. replace data.frame() with 
-  # read_csv("1_inventory/in/my_sites.csv"). See README for an example of how to 
-  # use a shapefile to define the AOI.
+  # For the Saline Lakes proj, this is the aoi of the lake watersheds
   tar_target(
     p1_lake_watersheds,
     sf::st_read('1_inventory/cfg/p2_lake_watersheds_dissolved.shp', quiet = TRUE)
@@ -77,8 +74,9 @@ p1_targets_list <- list(
   ),
   
   # Inventory data available from the WQP within each of the boxes that overlap
-  # the area of interest. To prevent timeout issues that result from large data 
-  # requests, use {targets} dynamic branching capabilities to map the function 
+  # the Saline Lakes area of interest in the Great Basin.
+  # To prevent timeout issues that result from large data requests,
+  # using {targets} dynamic branching capabilities to map the function 
   # inventory_wqp() over each grid within p1_global_grid_aoi. {targets} will then
   # combine all of the grid-scale inventories into one table. See comments above
   # target p2_wqp_data_aoi (in 2_download.R) regarding the use of error = 'continue'.
@@ -103,7 +101,7 @@ p1_targets_list <- list(
     subset_inventory(p1_wqp_inventory, p1_AOI_sf)
   ),
   
-  ## Create spatial version of aoi sites inventory  
+  ## Create spatial version of Saline Lakes sites inventory  
   tar_target(
     p1_wqp_inventory_aoi_sf,
     p1_wqp_inventory_aoi %>%
@@ -113,7 +111,7 @@ p1_targets_list <- list(
   
 
   
-  # Summarize the data that would come back from the WQP
+  # Summarize the data that comes back from the WQP
   tar_target(
     p1_wqp_inventory_summary_csv,
     summarize_wqp_inventory(p1_wqp_inventory_aoi,
