@@ -91,10 +91,6 @@ conductivity:
 
 salinity:
 - "Salinity"
-- "Salinity, water, unfiltered, milligrams per milliliter at 25 degrees Celsius"
-- "Salinity, water, unfiltered, parts per thousand"
-- "Salinity, water, grams per liter"
-
 
 total dissolved solids:
 - 'Total dissolved solids'
