@@ -1,14 +1,22 @@
 # Source the functions that will be used to build the targets in p3_targets_list
 source("3_harmonize/src/format_columns.R")
 source("3_harmonize/src/clean_wqp_data.R")
+# specific harmonized functions for temp and conductivity0
 source("3_harmonize/src/clean_conductivity_data.R")
 source("3_harmonize/src/clean_temperature_data.R")
+# Note - the functions below are template functions and are identical. Added to ensure we can process targets `p3_wqp_param_cleaning_info` with same links. 
+# These functions can be expanded we find that it is needed
 source('3_harmonize/src/clean_DO_data.R')
 source('3_harmonize/src/clean_nitrate_data.R')
 source('3_harmonize/src/clean_nitrogen_data.R')
 source('3_harmonize/src/clean_ph_data.R')
 source('3_harmonize/src/clean_phosphorus_data.R')
 source('3_harmonize/src/clean_salinity_data.R')
+source('3_harmonize/src/clea_tds_data.R')
+source('3_harmonize/src/clean_density_data.R')
+source('3_harmonize/src/clean_spec_grav_data.R')
+
+
 
 p3_targets_list <- list(
   
@@ -42,7 +50,7 @@ p3_targets_list <- list(
   # Create a table that defines parameter-specific data cleaning functions.
   # Cleaning functions should be defined within a named list where the name
   # of each list element is the function name.
-  # For Saline Lakes Proj, added the characteristic Names of interest and created repeat functions for each of those params. 
+  # For Saline Lakes Proj, added the additional characteristic Names of interest (beyond template) and created repeat functions for each of those params. 
   tar_target(
     p3_wqp_param_cleaning_info,
     tibble(
@@ -53,7 +61,10 @@ p3_targets_list <- list(
                     'pH',
                     'nitrate',
                     'nitrogen',
-                    'phosphorus'),
+                    'phosphorus',
+                    'total dissolved solids',
+                    'density',
+                    'specific gravity'),
       cleaning_fxn = c(clean_conductivity_data,
                        clean_temperature_data,
                        clean_salinity_data,
@@ -61,7 +72,10 @@ p3_targets_list <- list(
                        clean_ph_data,
                        clean_nitrate_data,
                        clean_N_data,
-                       clean_phos_data)
+                       clean_phos_data,
+                       clean_TDS_data,
+                       clean_density_data,
+                       clean_spec_grav_data)
       )
   ),
   

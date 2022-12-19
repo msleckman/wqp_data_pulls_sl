@@ -25,7 +25,10 @@ param_groups_select <- c('temperature',
                          'pH',
                          'nitrate',
                          'nitrogen',
-                         'phosphorus')
+                         'phosphorus',
+                         'total dissolved solids',
+                         'density',
+                         'specific gravity')
 
 # Specifying arguments to WQP queries
 # see https://www.waterqualitydata.us/webservices_documentation for more information 
