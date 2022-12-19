@@ -4,7 +4,7 @@ source("2_download/src/summarize_wqp_download.R")
 
 p2_targets_list <- list(
   
-  # Pull site id's and total number of records for each site from the WQP inventory
+  # Pull site id's and total number of records for each site inventoried from WQP from our Saline Lakes 
   tar_target(
     p2_site_counts,
     p1_wqp_inventory_aoi %>%

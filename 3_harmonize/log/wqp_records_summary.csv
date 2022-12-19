@@ -29,9 +29,12 @@ nitrate,Nitrate,MPN/100ml,1
 nitrate,Nitrate,ueq/L,31
 nitrate,Nitrate,NA,1694
 nitrate,Nitrate + Nitrite,mg N/l******,47
-nitrate,Nitrate + Nitrite,mg/l,2406
-nitrate,Nitrate + Nitrite,ug/l,8
+nitrate,Nitrate + Nitrite,mg/l,2652
+nitrate,Nitrate + Nitrite,ug/l,36
+nitrate,Nitrate + Nitrite,NA,4
+nitrate,Nitrate as N,mg/l,11
 nitrate,Nitrate as N,ueq/L,69
+nitrate,Nitrate as N,NA,1
 nitrate,Nitrite,mg N/l******,79
 nitrate,Nitrite,mg/l,7910
 nitrate,Nitrite,mg/l as N,1370
@@ -56,12 +59,12 @@ nitrogen,Organic Nitrogen,NA,6563
 nitrogen,Total Kjeldahl nitrogen,mg/l,1118
 nitrogen,Total Kjeldahl nitrogen,NA,454
 nitrogen,Total Kjeldahl nitrogen (Organic N & NH3),mg/l,134
-nitrogen,"Total Nitrogen, mixed forms",mg/l,1004
+nitrogen,"Total Nitrogen, mixed forms",mg/l,1007
 nitrogen,"Total Nitrogen, mixed forms",ug/l,21
 pH,pH,0/00,3
 pH,pH,count,2
 pH,pH,deg C,3
-pH,pH,mg/l,14
+pH,pH,mg/l,41
 pH,pH,Mole/l,1
 pH,pH,None,78158
 pH,pH,std units,13364
@@ -85,7 +88,7 @@ phosphorus,Phosphorus,ppb,3
 phosphorus,Phosphorus,ug/l,361
 phosphorus,Phosphorus,NA,144
 phosphorus,Soluble Reactive Phosphorus (SRP),mg/l,1
-phosphorus,"Total Phosphorus, mixed forms",mg/l,2513
+phosphorus,"Total Phosphorus, mixed forms",mg/l,2624
 phosphorus,"Total Phosphorus, mixed forms",ug/l,79
 salinity,Salinity,g/l,1252
 salinity,Salinity,ppm,2963
