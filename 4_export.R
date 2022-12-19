@@ -31,7 +31,7 @@ p4_targets_list <- list(
     }, format = "file"
   ),
   
-  ## Save output file containing the harmonized data with stream order category 
+  # Save output file containing the harmonized data with stream order category and monitoring site type
   tar_target(
     p4_wqp_data_aoi_clean_param_added_cols_rds,{
       outfile <- "4_export/out/harmonized_wqp_data_added_cols.rds"
@@ -40,6 +40,8 @@ p4_targets_list <- list(
     }, format = "file"
   ),
   
+  # save harmonized inventory of sites and CharacteristicName with stream order category and monitoring site type
+  # sites are for the msot part duplicated because this tbl is unique by Monitoring site & characteristicName (many sites measure more than 1 characteristicName)
   tar_target(
     p4_wqp_inventory_aoi_added_cols,
     {outfile <- "4_export/out/harmonized_wqp_sites.rds"

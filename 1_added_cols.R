@@ -3,12 +3,13 @@ source('1_inventory/src/sites_along_waterbody.R')
 p1_added_cols_list <- list(
   
 
-  ## Create simple sf dict of unique monitoringLocationIdentifier sites and point geom
+  ## Create simple sf dict of unique MonitoringLocationIdentifier sites, Monitoring Site Type, and point geom
   tar_target(
     p1_wqp_inventory_aoi_sf_dict,
     p1_wqp_inventory_aoi_sf %>%
-      select(MonitoringLocationIdentifier) %>%
-      distinct()
+      ## selected both Monitoring Location Id and Monitoring Location Type to keep track of site type
+      select(MonitoringLocationIdentifier, ResolvedMonitoringLocationTypeName) %>%
+      distinct() 
   ),
   
   ## Create simple sf obj of sites Identifier and associated lake 
