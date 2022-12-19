@@ -9,6 +9,7 @@ conductivity,Specific conductance,mS/cm,5
 conductivity,Specific conductance,umho/cm,470
 conductivity,Specific conductance,uS/cm,107699
 conductivity,Specific conductance,NA,106
+density,Density of water at 20 deg C,g/mL @ 20C,385
 DO,Dissolved oxygen (DO),%,1103
 DO,Dissolved oxygen (DO),count,1
 DO,Dissolved oxygen (DO),mg,3070
@@ -100,6 +101,7 @@ salinity,Salinity,ppth,8214
 salinity,Salinity,PSS,3884
 salinity,Salinity,PSU,1337
 salinity,Salinity,NA,145
+specific gravity,Specific gravity,None,294
 temperature,Temperature,deg C,305
 temperature,"Temperature, sample",deg C,1
 temperature,"Temperature, water",deg C,122054
@@ -107,3 +109,10 @@ temperature,"Temperature, water",mg/l,6
 temperature,"Temperature, water",None,3
 temperature,"Temperature, water",NA,28
 temperature,"Temperature, water, deg F",deg C,15
+total dissolved solids,Total dissolved solids,g/l,1556
+total dissolved solids,Total dissolved solids,mg/l,55085
+total dissolved solids,Total dissolved solids,ppm,3626
+total dissolved solids,Total dissolved solids,ppt,1076
+total dissolved solids,Total dissolved solids,tons/ac ft,6078
+total dissolved solids,Total dissolved solids,tons/day,126
+total dissolved solids,Total dissolved solids,NA,64

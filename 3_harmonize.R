@@ -12,7 +12,7 @@ source('3_harmonize/src/clean_nitrogen_data.R')
 source('3_harmonize/src/clean_ph_data.R')
 source('3_harmonize/src/clean_phosphorus_data.R')
 source('3_harmonize/src/clean_salinity_data.R')
-source('3_harmonize/src/clea_tds_data.R')
+source('3_harmonize/src/clean_tds_data.R')
 source('3_harmonize/src/clean_density_data.R')
 source('3_harmonize/src/clean_spec_grav_data.R')
 
@@ -73,7 +73,7 @@ p3_targets_list <- list(
                        clean_nitrate_data,
                        clean_N_data,
                        clean_phos_data,
-                       clean_TDS_data,
+                       clean_tds_data,
                        clean_density_data,
                        clean_spec_grav_data)
       )

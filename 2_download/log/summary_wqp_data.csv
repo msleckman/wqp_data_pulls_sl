@@ -1,5 +1,6 @@
 CharacteristicName,n_sites,n_records
 Conductivity,605,11380
+Density of water at 20 deg C,36,385
 Dissolved oxygen (DO),2860,141548
 Dissolved oxygen saturation,1785,106517
 Inorganic nitrogen (nitrate and nitrite),1755,17139
@@ -20,10 +21,12 @@ Phosphorus,1656,38389
 Salinity,1200,27239
 Soluble Reactive Phosphorus (SRP),1,8
 Specific conductance,5716,190456
+Specific gravity,8,294
 Temperature,9,305
 "Temperature, sample",1,1
 "Temperature, water",6102,229336
 "Temperature, water, deg F",7,15
+Total dissolved solids,4700,87439
 Total Kjeldahl nitrogen,89,1690
 Total Kjeldahl nitrogen (Organic N & NH3),18,134
 "Total Nitrogen, mixed forms",164,1046
