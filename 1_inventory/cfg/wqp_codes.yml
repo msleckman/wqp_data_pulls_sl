@@ -96,10 +96,11 @@ salinity:
 - "Salinity, water, grams per liter"
 
 
-Total Dissolved Solids:
+total dissolved solids:
 - 'Total dissolved solids'
 
-Density:
+density:
 - 'Density of water at 20 deg C'
 
-
+specific gravity: 
+- 'Specific gravity'
