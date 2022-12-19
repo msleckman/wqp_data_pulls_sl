@@ -4,6 +4,7 @@ _targets
 #All pipeline output
 */out/*
 !*/*/.placeholder.txt
+!*/*/.empty
 
 #R files
 # History files
@@ -25,5 +26,7 @@ _targets
 
 ## project folders
 /summary_plots/*
-/4_export/*
+
+## datasets
+.rds
 
